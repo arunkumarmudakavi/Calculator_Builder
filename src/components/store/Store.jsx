@@ -8,16 +8,12 @@ const Store = (set) => ({
   addComponent: (value, type, id) => {
     // console.log(value, type, id);
     set((state) => ({
-      components: state.components.some((i) => i?.id === id) ? state.components : [...state.components, { value, id, type }],
+      components: state.components.some((i) => i?.id === id)
+        ? state.components
+        : [...state.components, { value, id, type }],
     }));
   },
   getAllComponents: () => set((state) => ({ components: state.components })),
-  singleComponent: "",
-  getComponent: (componentId) => {
-    set((state) => ({
-      singleComponent: state.components.find((c) => c?.id === componentId),
-    }));
-  },
   expression: "",
   addExpression: (value) =>
     set((state) => ({

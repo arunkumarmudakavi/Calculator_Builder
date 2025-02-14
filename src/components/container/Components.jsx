@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useStore from "../store/Store";
-import { useDraggable } from "@dnd-kit/core";
 import Container from "./Container";
 
 const Components = () => {
@@ -24,31 +23,9 @@ const Components = () => {
     { id: "clear", type: "button", label: "C" },
   ];
 
-  const {
-    setClickedButton,
-    addComponent,
-    clickedButton,
-    components,
-    singleComponent,
-    getComponent,
-    clearExpression,
-  } = useStore.getState();
-
-  // (state) => ({
-  //   components: state.components,
-  // })
-
-  // const [items, setItems] = useState(components);
-
-  const [ex, setEx] = useState(0);
-
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: ex.id,
-  });
+  const { setClickedButton, addComponent } = useStore.getState();
 
   const handleClick = (val, label, type) => {
-    // const el = document.getElementById(label)
-    // console.log(el)
     addComponent(val, type, label);
     setClickedButton(label);
   };
@@ -85,7 +62,9 @@ const Components = () => {
                       onClick={() =>
                         handleClick(comp?.label, comp?.id, comp?.type)
                       }
-                    >Textbox</button>
+                    >
+                      Textbox
+                    </button>
                   )}
                 </li>
               </React.Fragment>
@@ -93,7 +72,7 @@ const Components = () => {
           })}
         </ul>
         <section className="bg-gray-300 p-2 m-2  rounded w-[50rem] h-[80vh] ml-10">
-          <Container/>
+          <Container />
         </section>
       </section>
     </>

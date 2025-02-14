@@ -1,5 +1,4 @@
 import React from "react";
-import { useDraggable } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import useStore from "./store/Store";
@@ -7,20 +6,16 @@ import useStore from "./store/Store";
 
 
 function draggable(value, type, id, setItems) {
-  // export function Draggable({ items }) {
-  // console.log(setItems)
-  console.log(value, type, id);
 
-  const { expression, addExpression, components, clearExpression } =
+  const { expression, addExpression, clearExpression } =
     useStore.getState();
-  // console.log(components)
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
       id: id,
     });
 
     const handleOperation = (v, t, i) => {
-      console.log(v, t, i);
+      // console.log(v, t, i);
       if (v === "C") {
         clearExpression()
       }
@@ -67,26 +62,7 @@ function draggable(value, type, id, setItems) {
     );
   }
 
-  // return (<span>
-  //   {components?.map((d) => {
-  //   console.log(d?.type, d?.value);
-  //       <button
-  //         id={d?.id}
-  //         className="w-[10vw] h-[7vh] bg-blue-950 text-white m-2 rounded"
-  //         type={d?.type}
-  //         ref={setNodeRef}
-  //         style={style}
-  //         {...listeners}
-  //         {...attributes}
-  //       onClick={() => handleOperation(d?.value, d?.type, d?.id)}
-  //       >
-  //         {d?.value}
-  //       </button>
-  //   }
-  // )}
-  // </span>)
 }
 
 export  {draggable};
 
-// }
